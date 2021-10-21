@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import Button from "material-ui/core/Button";
 
 function FormularioCadastro(){
     return(
@@ -9,7 +10,7 @@ function FormularioCadastro(){
 
             <label>Sobrenome</label>
             <input type="text"/>
-
+            
             <label>CPF</label>
             <input type="text"/>
 
@@ -19,7 +20,9 @@ function FormularioCadastro(){
             <label>Novidades</label>
             <input type="checkbox"/>
 
-            <button type="submit">Cadastrar</button>
+            <Button variant="contained">
+                Cadastrar
+            </Button>
         </form>);
 }
 
