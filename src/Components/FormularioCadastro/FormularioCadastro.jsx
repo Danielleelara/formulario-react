@@ -1,28 +1,96 @@
-import React from 'react';
-import { render } from 'react-dom';
-import Button from "material-ui/core/Button";
+import React, {useState} from 'react';
+import { Button, TextField, Switch, FormControlLabel} from '@material-ui/core';
 
-function FormularioCadastro(){
+
+function FormularioCadastro({aoEnviar, validarCPF}){
+    const [nome, setNome] = useState('');
+    const [sobrenome, setSobrenome] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [promocoes, setPromocoes] = useState(true);
+    const [novidades, setNovidades] = useState(true);
+    const [erros, setErros] = useState({cpf:{valido:true, texto:""}});
+   
     return(
-        <form>
-            <label>Nome</label>
-            <input type="text"/>
+        <form 
+            onSubmit={(event) => {
+                event.preventDefault();
+                aoEnviar({nome, sobrenome, cpf, novidades, promocoes})
 
-            <label>Sobrenome</label>
-            <input type="text"/>
-            
-            <label>CPF</label>
-            <input type="text"/>
+            }}>
+            <TextField 
+                value = {nome}
+                onChange={(event) => {
+                    setNome(event.target.value);
+                }}
+                id="nome" 
+                color="secondary" 
+                label="Nome" 
+                variant="outlined" 
+                margin="normal"
+                fullWidth 
+                
+            />
+            <TextField 
+                value = { sobrenome }
+                onChange={(event) => {
+                    setSobrenome(event.target.value);
+                }}
+                id="sobrenome" 
+                label="Sobrenome" 
+                variant="outlined" 
+                fullWidth 
+                margin="normal"
+            />
+            <TextField 
+                value={ cpf }
+                 onChange={(event) => {
+                    setCpf(event.target.value);
+                }}
+                onBlur={(event)=>{
+                    const ehValido = validarCPF(cpf)
+                    setErros({cpf:ehValido});
+                }}
+                error={!erros.cpf.valido}
+                helperText={erros.cpf.texto}
+                id="CPF" 
+                label="CPF" 
+                variant="outlined" 
+                fullWidth 
+                margin="normal"
+            />  
+            <FormControlLabel
+                label="Promoções" 
+                control={
+                    <Switch 
+                    checked={promocoes} 
+                    onChange={(event) => {
+                    setPromocoes(event.target.checked);
+                }}
+                name="promoções" 
+                defaultChecked={promocoes} 
+                color="primary" 
+                />
+            }
+            />
+             <FormControlLabel
+                label="Novidades" 
+                control={
+                    <Switch
+                    checked={novidades}
+                    onChange={(event) => {
+                        setNovidades(event.target.checked);
+                    }}
+                    name="novidades" 
+                    defaultChecked={novidades}
+                    color="primary" 
+                    />
+                }
+            />
 
-            <label>Promoções</label>
-            <input type="checkbox"/>
-
-            <label>Novidades</label>
-            <input type="checkbox"/>
-
-            <Button variant="contained">
+            <Button type="submit" variant="contained" color="primary">
                 Cadastrar
             </Button>
+
         </form>);
 }
 
