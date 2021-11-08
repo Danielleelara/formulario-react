@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 
 function DadosEntrega() {
 
@@ -41,6 +41,9 @@ function DadosEntrega() {
             margin="normal"
             
             />
+             <Button type="submit" variant="contained" color="primary" fullWidth>
+                Finalizar Cadastro
+            </Button>
 
 
         </form>
