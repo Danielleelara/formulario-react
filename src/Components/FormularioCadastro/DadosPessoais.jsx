@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import { Button, TextField, Switch, FormControlLabel} from '@material-ui/core';
 
-function DadosPessoais({aoEnviar, validarCPF}){
+function DadosPessoais({aoEnviar, validarCPF, validarNumero}){
     const [nome, setNome] = useState('');
     const [sobrenome, setSobrenome] = useState('');
     const [cpf, setCpf] = useState('');
@@ -15,7 +15,6 @@ function DadosPessoais({aoEnviar, validarCPF}){
             onSubmit={(event) => {
                 event.preventDefault();
                 aoEnviar({nome, sobrenome, cpf, novidades, promocoes})
-
             }}>
             <TextField 
                 value = {nome}
@@ -28,7 +27,7 @@ function DadosPessoais({aoEnviar, validarCPF}){
                 variant="outlined" 
                 margin="normal"
                 fullWidth 
-                
+                required 
             />
             <TextField 
                 value = { sobrenome }
@@ -40,6 +39,7 @@ function DadosPessoais({aoEnviar, validarCPF}){
                 variant="outlined" 
                 fullWidth 
                 margin="normal"
+                required 
             />
             <TextField 
                 value={ cpf }
@@ -57,6 +57,7 @@ function DadosPessoais({aoEnviar, validarCPF}){
                 variant="outlined" 
                 fullWidth 
                 margin="normal"
+                required 
             />  
             <FormControlLabel
                 label="Promoções" 
