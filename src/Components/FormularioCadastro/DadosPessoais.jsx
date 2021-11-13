@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import { Button, TextField, Switch, FormControlLabel} from '@material-ui/core';
 
-function DadosPessoais({aoEnviar, validarCPF, validarNumero}){
+function DadosPessoais({aoEnviar, validarCPF}){
     const [nome, setNome] = useState('');
     const [sobrenome, setSobrenome] = useState('');
     const [cpf, setCpf] = useState('');

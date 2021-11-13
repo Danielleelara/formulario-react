@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
 
-function DadosEntrega({aoEnviar, validarNumero}) {
+function DadosEntrega({aoEnviar}) {
     const [cep, setCep] = useState("");
     const [endereco, setEndereco] = useState("");
     const [numero, setNumero] = useState("");
     const [estado, setEstado] = useState("");
     const [cidade, setCidade] = useState("");
-    const [errosNumero, setErrosNumero] = useState({numero:{valido:true, texto:""}});   
+   // const [errosNumero, setErrosNumero] = useState({numero:{valido:true, texto:""}});   
 
     return(
         <form 
@@ -46,12 +46,12 @@ function DadosEntrega({aoEnviar, validarNumero}) {
             onChange={(event)=>{
                 setNumero(event.target.value)
             }}
-            onBlur={(event)=>{
-                const ehValido = validarNumero(numero)
-                setErrosNumero({numero:ehValido});
-            }}
-            error={!errosNumero.numero.valido}
-                helperText={errosNumero.numero.texto}
+            // onBlur={(event)=>{
+            //     const ehValido = validarNumero(numero)
+            //     setErrosNumero({numero:ehValido});
+            // }}
+            // error={!errosNumero.numero.valido}
+            //     helperText={errosNumero.numero.texto}
             id= "numero" 
             label="Número" 
             type="number"
