@@ -9,7 +9,7 @@ class App extends Component {
   return (
     <Container component="article" maxWidth="sm" >
     <Typography variant='h3' align='center'component='h1'>Formulário de Cadastro</Typography>
-    <FormularioCadastro aoEnviar={aoEnviarForm} validacoes={{validarCPF, validarSenha}}/>
+    <FormularioCadastro aoEnviar={aoEnviarForm} validacoes={{cpf:validarCPF, senha:validarSenha, nome:validarSenha}}/>
     </Container>
   );
  }
@@ -18,13 +18,5 @@ class App extends Component {
 function aoEnviarForm(dados){
   console.log(dados);
 }
-
-// function validarNumero (numero){
-//   if(numero.length !== 3)
-//     {return {valido:false, texto: "Número deve ter 3 dígitos."}
-//   }else {
-//     return {valido:true, texto: ""}
-//   }
-// }
 
 export default App;
