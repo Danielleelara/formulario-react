@@ -1,6 +1,5 @@
 import { Stepper, StepLabel, Step, Typography } from '@material-ui/core';
 import React,{useEffect, useState} from 'react';
-import { validarSenha } from '../../models/cadastro';
 import DadosEntrega from './DadosEntrega';
 import DadosPessoais from './DadosPessoais';
 import DadosUsuario from './DadosUsuario';
